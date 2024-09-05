@@ -13,3 +13,18 @@
       apt:
         name: libapache2-mod-php
         state: latest
+
+    - name: update repository index
+      dnf:
+        update_cache: yes
+      when: ansible_distribution == "CentOs"
+    - name: install apache2 package
+      dnf:
+        name: httpd
+        state: libapache2
+      when: ansible_distribution == "CentOs"
+    - name: add PHP 
+      dnf:
+        name: php
+        state: libapache2
+      when: ansible_distribution == "CentOs"
