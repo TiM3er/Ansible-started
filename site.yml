@@ -11,8 +11,7 @@
       apt:
         upgrate: dist
         update_cache: yes
-      when: ansible_distribution == "CentOs"
-
+    when: ansible_distribution == "Ubuntu"
 - hosts: web_servers
   become: true
   tasks:
@@ -23,6 +22,7 @@
           - apache2
           - libapache2-mod-php
         state: latest
+      when: ansible_distribution == "Ubuntu"
 
     - name: install apache2 and php package (CentOs)
       dnf:
