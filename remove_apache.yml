@@ -5,29 +5,21 @@
     - name: update repository index
       apt:
         update_cache: yes
-      when: ansible_distribution == "Ubuntu"
-    - name: install apache2 package
+    - name: install apache2 and php package
       apt:
-        name: apache2
+        name: 
+          - apache2
+          - libapache2-mod-php
         state: absent
-      when: ansible_distribution == "Ubuntu"
-    - name: add PHP 
-      apt:
-        name: libapache2-mod-php
-        state: absent
-      when: ansible_distribution == "Ubuntu"
 
     - name: update repository index
       dnf:
         update_cache: yes
       when: ansible_distribution == "CentOs"
-    - name: install apache2 package
+    - name: install apache2 and php package
       dnf:
-        name: httpd
-        state: absent
-      when: ansible_distribution == "CentOs"
-    - name: add PHP 
-      dnf:
-        name: php
+        name:
+          - httpd
+          - php
         state: absent
       when: ansible_distribution == "CentOs"
