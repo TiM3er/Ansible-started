@@ -16,3 +16,18 @@
         name: libapache2-mod-php
         state: absent
       when: ansible_distribution == "Ubuntu"
+
+    - name: update repository index
+      dnf:
+        update_cache: yes
+      when: ansible_distribution == "CentOs"
+    - name: install apache2 package
+      dnf:
+        name: httpd
+        state: absent
+      when: ansible_distribution == "CentOs"
+    - name: add PHP 
+      dnf:
+        name: php
+        state: absent
+      when: ansible_distribution == "CentOs"
