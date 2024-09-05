@@ -3,19 +3,10 @@
   become: true
   tasks:
     - name: remove apache2 and php package
-      apt:
+      package:
         update_cache: yes
         name: 
-          - apache2
-          - libapache2-mod-php
+          - "{{ apache_package }}"
+          - "{{ php }}"
         state: absent
 
-      when: ansible_distribution == "CentOs"
-    - name: remove apache2 and php package
-      dnf:
-        update_cache: yes
-        name:
-          - httpd
-          - php
-        state: absent
-      when: ansible_distribution == "CentOs"

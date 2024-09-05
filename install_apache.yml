@@ -3,7 +3,7 @@
   become: true
   tasks:
     - name: install apache and php package
-      apt:
+      package:
         update_cache: yes
         name: 
           - "{{ apache_package }}"
