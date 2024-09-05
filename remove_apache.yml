@@ -9,13 +9,13 @@
           - apache2
           - libapache2-mod-php
         state: absent
-
       when: ansible_distribution == "Ubuntu"
+
     - name: remove apache2 and php package
-      dnf:
-      update_cache: yes
-        name:
-          - httpd
-          - php
-        state: absent
-      when: ansible_distribution == "CentOs"
+        dnf:
+        update_cache: yes
+          name:
+            - httpd
+            - php
+          state: absent
+        when: ansible_distribution == "CentOs"
