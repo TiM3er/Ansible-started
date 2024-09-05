@@ -13,7 +13,7 @@
 
     - name: remove apache2 and php package
         dnf:
-        update_cache: yes
+          update_cache: yes
           name:
             - httpd
             - php
