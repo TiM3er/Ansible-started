@@ -44,7 +44,7 @@
         state: started
         enabled: yes 
       when: ansible_distribution == "CentOs"
-      register: htppd
+      register: httpd
 
     - name: restrt httpd(CentOs)
       tags: apache,httpd,centos,start
