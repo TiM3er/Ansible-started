@@ -103,9 +103,21 @@
   become: true
   tasks:
     - name: create simone user
-      tags: alwaysa
+      tags: always
       user:
         name: simone
+        group: root
+    - name: add ssh key
+      tags: always
+      authorized_key:
+        name: simone
+        key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGWR0mo1f92gBQuv9IEq0j6GA04M6ez3JyyX20vpWg4Ff cnc@cnc"
+    - name: add sudoers file to simone
+      tags: always
+      copy:
+        src: sudeoe_simone
+        dest: /etc/sudoers.d/simone
+        owner: root
         group: root
 
 - hosts: workstations
