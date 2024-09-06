@@ -115,7 +115,7 @@
     - name: add sudoers file to simone
       tags: always
       copy:
-        src: sudeoe_simone
+        src: sudoer_simone
         dest: /etc/sudoers.d/simone
         owner: root
         group: root
