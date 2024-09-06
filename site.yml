@@ -32,7 +32,7 @@
       copy:
         src: default_site.html
         dest: /var/www/html/index.html
-        ownmer: root
+        owner: root
         group: root
         mode: 0644
 
