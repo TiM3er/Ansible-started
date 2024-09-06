@@ -44,6 +44,12 @@
           - php
         state: latest
       when: ansible_distribution == "CentOs"
+    - name: start Httpd (CentOs)
+      tags: apache,httpd,centos,start
+      service: 
+        name: httpd
+        state: started
+      when: ansible_distribution == "CentOs"
       
 - hosts: db_servers
   become: true
