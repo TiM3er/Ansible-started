@@ -52,7 +52,12 @@
         name: httpd
         state: restarted
       when: httpd.changed
-
+    - name: restrt apache2(Ubuntu)
+      tags: apache,httpd,centos,start
+      service: 
+        name: apache2
+        state: restarted
+      when: ansible_distribution == "Ubuntu"
     - name: change email address for admin 
       tags: apache,apache2,httpd
       lineinfile:
