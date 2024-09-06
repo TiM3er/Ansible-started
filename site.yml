@@ -27,14 +27,6 @@
         state: latest
       when: ansible_distribution == "Ubuntu"
 
-    - name: Copy file
-      tags: apache,apache2,httpd
-      copy:
-        src: default_site.html
-        dest: /var/www/html/index.html
-        owner: root
-        group: root
-        mode: 0644
 
     - name: install apache2 and php package (CentOs)
       tags: apache,httpd,centos
@@ -44,13 +36,40 @@
           - php
         state: latest
       when: ansible_distribution == "CentOs"
+
     - name: start Httpd (CentOs)
       tags: apache,httpd,centos,start
       service: 
         name: httpd
         state: started
+        enabled: yes 
       when: ansible_distribution == "CentOs"
-      
+      register: htppd
+
+    - name: restrt httpd(CentOs)
+      tags: apache,httpd,centos,start
+      service: 
+        name: httpd
+        state: restarted
+      when: httpd.changed
+
+    - name: change email address for admin 
+      tags: apache,apache2,httpd
+      lineinfile:
+        path: /etc/httpd/conf/httpd.conf
+        regexp: '^ServiceAdmin'
+        line : ServiceAdmin somebody@somecomro.net
+      when: ansible_distribution == "CentOs"
+
+    - name: Copy file
+      tags: apache,apache2,httpd
+      copy:
+        src: default_site.html
+        dest: /var/www/html/index.html
+        owner: root
+        group: root
+        mode: 0644
+
 - hosts: db_servers
   become: true
   tasks:
