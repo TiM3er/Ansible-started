@@ -98,6 +98,16 @@
         name: 
           - samba
         state: latest
+
+- hosts: all
+  become: true
+  tasks:
+    - name: create simone user
+      tags: alwaysa
+      user:
+        name: simone
+        group: root
+
 - hosts: workstations
   become: true
   tasks:
