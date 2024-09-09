@@ -37,7 +37,7 @@
   tags: apache,httpd,centos,start
   service: 
     name:
-      - "{{ apache_service }}"
+      - apache2
     state: restarted
   when: ansible_distribution == "Ubuntu"
 - name: change email address for admin 
