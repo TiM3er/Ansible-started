@@ -17,18 +17,23 @@
 
 - hosts: web_servers
   become: true
-  roles: webservice  
+  roles: 
+    - webservice  
 - hosts: db_servers
   become: true
-  roles: dbservice
+  roles: 
+    - dbservice
 
 - hosts: file_servers
   become: true
-  roles: fileservice
+  roles:
+    - fileservice
 - hosts: all
   become: true
-  roles: base
+  roles:
+    - base
 
 - hosts: workstations
   become: true
-  roles: workservice
+  roles:
+    - workservice
