@@ -23,7 +23,6 @@
   become: true
   roles: 
     - dbservice
-
 - hosts: file_servers
   become: true
   roles:
@@ -32,7 +31,6 @@
   become: true
   roles:
     - base
-
 - hosts: workstations
   become: true
   roles:
